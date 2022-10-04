@@ -21,19 +21,24 @@
 </ul>
 
 <div class="d-flex justify-content-between mt-4">
-  <form action="/upload" method="post" enctype="multipart/form-data">
+  <form id="form" action="/upload" method="post" enctype="multipart/form-data">
     <input
       class="form-control-file"
       type="file"
       accept="image/*"
       name="photo"
+      id="file"
     />
     <input class="imageType" type="hidden" name="type" value="story" />
-    <input class="btn mt-3" type="submit" value="upload" />
+    <!-- <input class="btn mt-3" type="submit" value="upload" /> -->
   </form>
 </div>
 
 <script>
+  document.getElementById("file").onchange = function () {
+    document.getElementById("form").submit();
+  };
+
   $(".profileImage").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");

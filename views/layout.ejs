@@ -27,6 +27,7 @@
     <style>
       body {
         background: #b53745;
+        min-height: 100vh;
       }
       .card-header {
         background: #c74f5d;
@@ -50,6 +51,22 @@
         height: auto;
         max-height: 80px;
       }
+      .footer {
+        background: #b53745;
+        color: #ffffff;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        /* width: calc(100% - 30px); */
+        width: 100%;
+        margin: 0 !important;
+      }
+      .text-muted {
+        color: #ffffff60 !important;
+      }
+      .main-content {
+        min-height: calc(100vh - 116px);
+      }
     </style>
     <title>BGRS</title>
   </head>
@@ -66,14 +83,33 @@
 
         <!-- <img src="/assets/logo-icon-1.png" class="logo-icon2" /> -->
       </div>
-      <div class="d-flex justify-content-center mt-4"></div>
 
-      <div class="card border-0 mt-4">
-        <!-- <h1 class="card-header"></h1> -->
-        <div class="card-body">
-          <div class="form-group"><%- body %></div>
+      <div class="main-content">
+        <div class="mainCard card border-0 mt-4">
+          <div class="card-body">
+            <div class="form-group"><%- body %></div>
+          </div>
         </div>
       </div>
+
+      <!-- <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 footer"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p class="mb-0 text-muted">Developed By :</p>
+              <p class="mt-0 mb-0">Jitendrasinh Rana</p>
+              <p class="mt-0 mb-0">+91 9033 8353 99</p>
+            </div>
+            <div class="col">
+              <p class="mb-0 text-muted">Designs By :</p>
+              <p class="mt-0 mb-0">Jaydeepsinh Gohil</p>
+              <p class="mt-0 mb-0">+91 6355 5051 10</p>
+            </div>
+          </div>
+        </div>
+      </footer> -->
     </div>
   </body>
 </html>
