@@ -23,6 +23,9 @@ let storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// app.use("/", express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+
 const PORT = 3000;
 
 app.get("/", function (req, res) {
@@ -31,14 +34,22 @@ app.get("/", function (req, res) {
 
 app.post("/upload", upload.single("photo"), async (req, res) => {
   const { filename: image } = req.file;
-
+  let width, height;
+  const type = req.body.type;
+  if (type === "story") {
+    width = 700;
+    height = 1200;
+  } else {
+    width = 500;
+    height = 500;
+  }
   const response = await sharp(req.file.path)
-    .resize(512, 512)
+    .resize(width, height)
     .jpeg({ quality: 90 })
     .toFile(path.resolve(req.file.destination, "resized", image));
   fs.unlinkSync(req.file.path);
 
-  const outputImage = await processImage(image);
+  const outputImage = await processImage(image, type, width, height);
   res.render("output", { image: outputImage });
 });
 

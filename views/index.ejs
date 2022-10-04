@@ -1,19 +1,48 @@
 <% layout('layout') -%>
-<div class="container">
-  <div class="card border-success mt-5">
-    <h1 class="card-header">BGRS</h1>
-    <div class="card-body">
-      <div class="form-group">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <input
-            class="form-control-file"
-            type="file"
-            accept="image/*"
-            name="photo"
-          />
-          <input class="btn mt-3" type="submit" value="upload" />
-        </form>
-      </div>
-    </div>
-  </div>
+<style>
+  .nav .nav-link {
+    color: #b53745;
+  }
+  .nav .nav-link.active {
+    background-color: #b5374520;
+    color: #b53745;
+  }
+</style>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active storyImage" href="#">Story Image</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link profileImage" aria-current="page" href="#"
+      >Profile Image</a
+    >
+  </li>
+</ul>
+
+<div class="d-flex justify-content-between mt-4">
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input
+      class="form-control-file"
+      type="file"
+      accept="image/*"
+      name="photo"
+    />
+    <input class="imageType" type="hidden" name="type" value="story" />
+    <input class="btn mt-3" type="submit" value="upload" />
+  </form>
 </div>
+
+<script>
+  $(".profileImage").click(function () {
+    $(".nav-link").removeClass("active");
+    $(this).addClass("active");
+    $(".imageType").val("profile");
+  });
+
+  $(".storyImage").click(function () {
+    $(".nav-link").removeClass("active");
+    $(this).addClass("active");
+    $(".imageType").val("story");
+  });
+</script>

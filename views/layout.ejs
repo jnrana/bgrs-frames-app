@@ -11,15 +11,69 @@
       integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
       crossorigin="anonymous"
     />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <style>
       body {
-        background: darkturquoise;
+        background: #b53745;
+      }
+      .card-header {
+        background: #c74f5d;
+        border: none;
+      }
+      .logo-name {
+        max-width: 100%;
+        width: 200px;
+        margin: 0 auto;
+        height: auto;
+      }
+      .logo-vijya {
+        max-width: 100%;
+        width: 300px;
+        margin: 0 auto;
+      }
+      .logo-icon1,
+      .logo-icon2 {
+        /* max-width: 100%; */
+        width: 90px;
+        height: auto;
+        max-height: 80px;
       }
     </style>
-    <title>BJRS</title>
+    <title>BGRS</title>
   </head>
   <body>
-    <%- body %>
+    <div class="container">
+      <div class="d-flex mt-4">
+        <div>
+          <img src="/assets/logo-icon.png" class="logo-icon1" />
+        </div>
+        <div class="d-flex flex-column ml-3 align-items-start align-self-start">
+          <img src="/assets/logo-name.png" class="logo-name mb-1" />
+          <img src="/assets/vijyaDashmi-image.png" class="logo-vijya" />
+        </div>
+
+        <!-- <img src="/assets/logo-icon-1.png" class="logo-icon2" /> -->
+      </div>
+      <div class="d-flex justify-content-center mt-4"></div>
+
+      <div class="card border-0 mt-4">
+        <!-- <h1 class="card-header"></h1> -->
+        <div class="card-body">
+          <div class="form-group"><%- body %></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
