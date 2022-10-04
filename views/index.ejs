@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+<div class="container">
+  <div class="card border-success mt-5">
+    <h1 class="card-header">BGRS</h1>
+    <div class="card-body">
+      <div class="form-group">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input
+            class="form-control-file"
+            type="file"
+            accept="image/*"
+            name="photo"
+          />
+          <input class="btn mt-3" type="submit" value="upload" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
