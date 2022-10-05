@@ -33,24 +33,28 @@ app.get("/", function (req, res) {
 });
 
 app.post("/upload", upload.single("photo"), async (req, res) => {
-  const { filename: image } = req.file;
-  let width, height;
-  const type = req.body.type;
-  if (type === "story") {
-    width = 700;
-    height = 1200;
-  } else {
-    width = 500;
-    height = 500;
-  }
-  const response = await sharp(req.file.path)
-    .resize(width, height)
-    .jpeg({ quality: 90 })
-    .toFile(path.resolve(req.file.destination, "resized", image));
-  fs.unlinkSync(req.file.path);
+  try {
+    const { filename: image } = req.file;
+    let width, height;
+    const type = req.body.type;
+    if (type === "story") {
+      width = 700;
+      height = 1200;
+    } else {
+      width = 500;
+      height = 500;
+    }
+    const response = await sharp(req.file.path)
+      .resize(width, height)
+      .jpeg({ quality: 90 })
+      .toFile(path.resolve(req.file.destination, "resized", image));
+    fs.unlinkSync(req.file.path);
 
-  const outputImage = await processImage(image, type, width, height);
-  res.render("output", { image: outputImage });
+    const outputImage = await processImage(image, type, width, height);
+    res.render("output", { image: outputImage });
+  } catch (error) {
+    res.redirect("/");
+  }
 });
 
 app.get("/output", async function (req, res) {
