@@ -33,12 +33,17 @@
 
 <div class="d-flex justify-content-between mt-4">
   <form id="form" action="/upload" method="post" enctype="multipart/form-data">
-    <img
-      class="rounded profile-img"
-      id="profile-img"
-      src="/assets/story.png"
-      alt="avatar"
-    />
+    <div class="imageWrapper">
+      <div class="backDrop loader" style="display: none">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+      </div>
+      <img
+        class="rounded profile-img"
+        id="profile-img"
+        src="/assets/story.png"
+        alt="avatar"
+      />
+    </div>
 
     <input
       class="form-control-file"
@@ -162,10 +167,6 @@
         height = 512;
       }
 
-      console.log("aspectRatio: ", aspectRatio);
-      console.log("width: ", width);
-      console.log("height: ", height);
-
       var files = e.target.files;
 
       var done = function (url) {
@@ -208,6 +209,7 @@
 
         canvas.toBlob(
           function (blob) {
+            $(".loader").show();
             var formData = new FormData();
             formData.append("photo", blob, "file.jpg");
             formData.append("type", $(".imageType").val());
@@ -223,9 +225,11 @@
                 $(".socialWrapper").show();
                 $(".tabsWrapper").hide();
                 $(".backWrapper").show();
+                $(".loader").hide();
               },
               error: function () {
                 console.log("Upload error");
+                $(".loader").hide();
               },
             });
           },
