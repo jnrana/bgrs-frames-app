@@ -51,7 +51,10 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     fs.unlinkSync(req.file.path);
 
     const outputImage = await processImage(image, type, width, height);
-    res.render("output", { image: outputImage });
+    res.send({
+      image: outputImage,
+    });
+    // res.render("output", { image: outputImage });
   } catch (error) {
     res.redirect("/");
   }
